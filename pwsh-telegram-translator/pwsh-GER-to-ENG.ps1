@@ -72,7 +72,7 @@ foreach ($TG_GETNEWMSG_MSG in $TG_GETNEWMSG_REQ_JSON_MSGS) {
     Invoke-RestMethod -Uri $AZ_TEXT2SPEECH_URI -Headers $AZ_TEXT2SPEECH_HEADERS -Method Post -Body $AZ_TEXT2SPEECH_DATA -OutFile $TEXT2SPEECH_TEMPFILE
 
     #Jetzt senden wir den Text per Telegram zurück
-    $TG_SENDMESSAGE_URI = 'https://api.telegram.org/bot' . $TG_BOT_API_KEY . '/SendMessage?chat_id='+ $TG_GETNEWMSG_MSG_CHAT_ID +'&text='+ $AZ_TRANSLATION_RES_TRANSLATED
+    $TG_SENDMESSAGE_URI = 'https://api.telegram.org/bot' + $TG_BOT_API_KEY + '/SendMessage?chat_id='+ $TG_GETNEWMSG_MSG_CHAT_ID +'&text='+ $AZ_TRANSLATION_RES_TRANSLATED
     Invoke-Webrequest -SkipCertificateCheck -uri $TG_SENDMESSAGE_URI
     #Jetzt senden wir die Audiofile in Telegram zurück
 
